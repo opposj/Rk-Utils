@@ -45,20 +45,31 @@ A longer description of your project goes here...
 Making Changes & Contributing
 =============================
 
-This project uses `pre-commit`_, please make sure to install it before making any
-changes::
+For developers, extra requirements are in `requirements_dev.txt`::
 
-    pip install pre-commit
     cd rk_utils
+    pip install -r requirements_dev.txt
+
+This project uses `pre-commit`_, and it is a good idea to update the hooks to
+the latest version before installing::
+
+    cd rk_utils
+    pre-commit autoupdate
     pre-commit install
 
-It is a good idea to update the hooks to the latest version::
-
-    pre-commit autoupdate
-
-Don't forget to tell your contributors to also install and use pre-commit.
-
 .. _pre-commit: https://pre-commit.com/
+
+There are some useful `tox`_ commands that can be used to simplify developing::
+
+    cd rk_utils
+    tox  # to run all the tests
+    tox -e docs  # to build your documentation
+    tox -e build  # to build your package distribution
+    tox -e publish  # to test your project uploads correctly in test.pypi.org
+    tox -e publish -- --repository pypi  # to release your package to PyPI
+    tox -av  # to list all the tasks available
+
+.. _tox: https://tox.readthedocs.io/
 
 Note
 ====
